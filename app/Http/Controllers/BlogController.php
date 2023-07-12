@@ -60,7 +60,7 @@ class BlogController extends Controller
     {
         $bd = blogpost::where('id',$data)->first();
         $comments = Comment::where('Post_id', $data)->get();
-        // dd($comments);
+        // dd($data);
         return view('blog/post', compact('bd','comments'));
         
     }

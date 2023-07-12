@@ -2,17 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-    </div>
+    
     <div class="row">
         <div class="col-12">
             <article class="mb-4">
                 <div class="container px-4 px-lg-5">
+                    <div class="text-center">
+                        <img class="img-fluid rounded" src="{{ asset( $bd->Poster ) }}" alt="img ">
+                    </div>
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">
-                            <div >
-                                <img style="height : 500px" src="{{ asset( $bd->Poster ) }}" alt="img ">
-                            </div>
+                            
                         <h2 class="post-title mt-5" >{{ $bd->Title }}</h2>
                         <sub class="post-meta">
                             Posted by
@@ -20,18 +20,13 @@
                             on {{ $bd->updated_at }}
                         </sub>
                         
-                        <p>{{ $bd->Description }}</p>
-                        
-                        </div>
-                    </div>
-                </div>
-            </article>
-             
-        </div>
-        @guest
+                        <p class="text-justify">{{ $bd->Description }}</p>
+
+
+                         @guest
         @else
-        <div class="row">
-            <div class="col-8 offset-2">
+        <div class="row mb-5 mt-5">
+            <div class="col-10">
                
                 <form action=" {{ route('comment.store') }}" method="post">
                     @csrf
@@ -51,15 +46,22 @@
         @foreach($comments as $item)
         <div class="post-preview">
             
-            <h2 class="post-title">{{ $item->User }}</h2>
+            <h3 class="post-title">{{ $item->User }}</h3>
             <sub class="post-meta">
                 Commented on {{ $item->updated_at }}
             </sub>
             <p class="post-details">{{ $item->Comment }}</p>
             
         </div>
-        <hr class="my-4" />
+        
         @endforeach
-    </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+             
+        
 </div>
 @endsection

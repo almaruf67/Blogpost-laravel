@@ -15,7 +15,7 @@
                                           
                             @foreach($blogp as $item)
                             <div class="post-preview">
-                                <a href="{{ route('post', $loop->iteration) }}" @style('text-decoration:none')>
+                                <a href="{{ route('post', $item->id) }}" @style('text-decoration:none')>
                                 <h2 class="post-title">{{ $item->Title }}</h2>
                                 <div>
                                     <img style="width: 50%;" src="{{ asset( $item->Poster ) }}" alt="img ">
