@@ -31,4 +31,20 @@
         </div>
     </div>
 </div>
+
+
+@section('scripts')
+{{-- <script>
+    ClassicEditor
+        .create( document.querySelector( '#des' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script> --}}
+<script>
+    $(document).ready(function(){
+        CKEDITOR.replace('des',{height:360,})
+    });
+</script>
+@endsection
 @endsection
