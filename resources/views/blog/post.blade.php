@@ -20,7 +20,7 @@
                             on {{ $bd->updated_at }}
                         </sub>
                         
-                        <p class="text-justify">{{ $bd->Description }}</p>
+                        <p class="text-justify">{!! $bd->Description !!}</p>
 
 
                          @guest

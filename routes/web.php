@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
-use Illuminate\Contracts\View\View;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\ProviderController;
+
+
 use Illuminate\Support\Facades\Route;
-use Illuminate\Database\Query\Builder;
+
 
 
 /*
@@ -19,9 +22,14 @@ use Illuminate\Database\Query\Builder;
 */
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/blog', BlogController::class)->middleware('auth');
 Route::get('/post/{data}', [BlogController::class, 'show'])->name('post');
 Route::resource('/comment', CommentController::class)->middleware('auth');
+
+
+Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
+Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
+ 
