@@ -4,6 +4,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\ProviderController;
+use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -28,7 +30,8 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/blog', BlogController::class)->middleware('auth');
 Route::get('/post/{data}', [BlogController::class, 'show'])->name('post');
 Route::resource('/comment', CommentController::class)->middleware('auth');
-
+Route::resource('/profile', UserController::class)->middleware('auth');
+// Route::get('/register/{provider}', [HomeController::class, 'index']);
 
 Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);

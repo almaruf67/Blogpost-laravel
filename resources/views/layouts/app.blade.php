@@ -17,7 +17,7 @@
     
     
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.4.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
 
@@ -76,6 +76,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <button type="button" class="btn btn-light" style="width: 100%" ><a href="{{ route('blog.index') }}" @style('text-decoration:none','color:none')>Create Blog</a></button>
+                                    <button type="button" class="btn btn-light" style="width: 100%" ><a href="{{ route('profile.index') }}" @style('text-decoration:none','color:none')>Profile</a></button>
                                     <button type="button" class="btn btn-light" style="width: 100%" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -36,8 +36,8 @@ class BlogController extends Controller
         if ($file) {
             $extention = $file->getClientOriginalExtension();
             $fileName = time() . rand(1, 999999) . '.' . $extention;
-            $file->move('images', $fileName);
-            $path = '/images/' . $fileName;
+            $file->move('images/post', $fileName);
+            $path = '/images/post/' . $fileName;
         } else {
             $path = null;
         }

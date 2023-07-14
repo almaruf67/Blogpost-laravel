@@ -76,7 +76,7 @@ a[target='_blank']{
     position: relative;
 }
 .bordert:after{
-    content: "or connect with";
+    content: "connect with";
     position: absolute;
     top: -13px;
     left: 33%;
