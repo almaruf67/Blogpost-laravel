@@ -10,7 +10,8 @@
 				<hr>
 			</div>
 			<!-- Form START -->
-			<form class="file-upload">
+			
+			<form action="#" class="file-upload">
 				<div class="row mb-5 gx-5">
 					<!-- Upload profile -->
 					<div class="col-xxl-4">
@@ -18,9 +19,10 @@
 							<div class="row g-3">
 								<h4 class="mb-4 mt-0">Upload your profile photo</h4>
 								<div class="text-center">
+									
 									<!-- Image upload -->
 									<div class="square position-relative display-2 mb-3">
-										<img src="{{ Auth::user()->image }}" alt="Facebook Avatar" height="64" width="64">
+										<img src="{{ Auth::user()->image }}" alt="Avatar" height="64" width="64">
 									</div>
 									<!-- Button -->
 									<input type="file" id="customFile" name="file" hidden="">

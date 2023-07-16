@@ -33,6 +33,7 @@ class ProviderController extends Controller
             'name' => $provideruser->name,
             'email' => $provideruser->email,
             'password' => $password,
+            'type'=> 'user',
             'image' => $provideruser->getAvatar(),
             
         ]);

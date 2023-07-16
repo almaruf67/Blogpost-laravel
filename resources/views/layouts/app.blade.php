@@ -40,7 +40,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @guest
@@ -68,6 +68,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                        
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -75,6 +76,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if ( Auth::user()->type=='admin')
+                                    <button type="button" class="btn btn-light" style="width: 100%" ><a href="{{route('admin')}}" @style('text-decoration:none','color:none')>Admin Panel</a></button>
+                                    @endif
                                     <button type="button" class="btn btn-light" style="width: 100%" ><a href="{{ route('blog.index') }}" @style('text-decoration:none','color:none')>Create Blog</a></button>
                                     <button type="button" class="btn btn-light" style="width: 100%" ><a href="{{ route('profile.index') }}" @style('text-decoration:none','color:none')>Profile</a></button>
                                     <button type="button" class="btn btn-light" style="width: 100%" href="{{ route('logout') }}"

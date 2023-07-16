@@ -21,7 +21,7 @@
                                 <div>
                                     <img style="width: 50%;" src="{{ asset( $item->Poster ) }}" alt="img ">
                                 </div>
-                                <h3 class="post-details">{!! $item->Description !!}</h3>
+                                <h3 class="post-details">{!! substr(strip_tags($item->Description), 0, 100) !!} ..</h3>
                                 </a>
                                 <p class="post-meta">
                                     Posted by

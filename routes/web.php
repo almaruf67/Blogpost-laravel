@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\ProviderController;
@@ -36,3 +37,10 @@ Route::resource('/profile', UserController::class)->middleware('auth');
 Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
  
+Route::get('/admin', function()
+{
+    return view('admin.panel');
+})->name('admin');
+// Route::get('/admin/user', [AdminController::class, 'user'])->name('adminuser');
+// Route::get('/admin/post', [AdminController::class, 'post'])->name('adminpost');
+// Route::get('/admin/comment', [AdminController::class, 'comment'])->name('admincomment');
