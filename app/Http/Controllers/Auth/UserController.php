@@ -54,16 +54,35 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        dd($request);
+        $User=User::find($id);
+        $file = $request['image'];
+        if ($file) {
+            $extention = $file->getClientOriginalExtension();
+            $fileName = time() . rand(1, 999999) . '.' . $extention;
+            $file->move('images/user', $fileName);
+            $path = '/images/user' . $fileName;
+        } else {
+            $path = $User->image ;
+        }
+        $User->name=$request->name;
+        $User->image=$path;
+        $User->phone=$request->phone;
+        $User->save();
+        
+        return redirect()->route('profile.index')->with('success','Product updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $User=User::find($id);
+        $User->delete();
+        return redirect()->route('home')->flash('success', 'The user has been deleted successfully.');
+        
     }
 }

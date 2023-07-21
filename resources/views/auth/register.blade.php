@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="css/login.css">
 @endsection
 @section('content')
-<div class="container bod">
-    <div class="row">
+<div class="container">
+    <div class="row mt-10">
         <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
             <div class="panel border bg-white">
                 <div class="panel-heading">
@@ -104,8 +104,7 @@
                             <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
                                 alt="">
                         </a>
-                        @php $provider='github' @endphp
-                        <a href="{{ '/auth'.'/'.$provider.'/redirect' }}" target="_blank" class="px-2">
+                        <a href="/auth/github/redirect" target="_blank" class="px-2">
                             <img src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png"
                                 alt="">
                         </a>

@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="css/login.css">
 @endsection
 @section('content')
-<div class="container bod">
-    <div class="row">
+<div class="container">
+    <div class="row mt-10">
         <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
             <div class="panel border bg-white">
                 <div class="panel-heading">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="mx-3 my-2 py-2 bordert">
                     <div class="text-center py-3">
-                        <a href="#" target="_blank" class="px-2">
+                        <a href="/auth/facebook/redirect" target="_blank" class="px-2">
                             <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt="">
                         </a>
                         <a href="/auth/google/redirect" target="_blank" class="px-2">

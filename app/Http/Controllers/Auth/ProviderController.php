@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+
 
 class ProviderController extends Controller
 {
@@ -25,7 +24,6 @@ class ProviderController extends Controller
         // dd($provideruser->getAvatar());
         
         
-
         $user = User::updateOrCreate([
             'provider_id'=>$provideruser->id,
             'provider' => $provider,
