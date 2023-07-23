@@ -32,7 +32,7 @@ Route::resource('/blog', BlogController::class)->middleware('auth');
 Route::get('/post/{data}', [BlogController::class, 'show'])->name('post');
 Route::resource('/comment', CommentController::class)->middleware('auth');
 Route::resource('/profile', UserController::class)->middleware('auth');
-// Route::get('/register/{provider}', [HomeController::class, 'index']);
+Route::post('/change-password', [UserController::class, 'changePassword'])->name('Passchange')->middleware('auth');
 
 Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);

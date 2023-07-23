@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -56,14 +58,14 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        dd($request);
+        // dd($request);
         $User=User::find($id);
         $file = $request['image'];
         if ($file) {
             $extention = $file->getClientOriginalExtension();
             $fileName = time() . rand(1, 999999) . '.' . $extention;
-            $file->move('images/user', $fileName);
-            $path = '/images/user' . $fileName;
+            $file->move('images/user/', $fileName);
+            $path = '/images/user/' . $fileName;
         } else {
             $path = $User->image ;
         }
@@ -84,5 +86,33 @@ class UserController extends Controller
         $User->delete();
         return redirect()->route('home')->flash('success', 'The user has been deleted successfully.');
         
+    }
+
+    public function changePassword(Request $request)
+    {
+        // dd($request);
+        $this->validate($request, [
+            'current_password' => 'required|string',
+            'new_password' => 'required|confirmed|min:8|string',
+            'new_password_confirmation' => 'required|string'
+        ]);
+        $auth = Auth::user();
+ 
+ // The passwords matches
+        if (!Hash::check($request->get('current_password'), $auth->password)) 
+        {
+            return redirect()->back()->with('error', "Current Password is Invalid");
+        }
+ 
+// Current password and new password same
+        if (strcmp($request->get('current_password'), $request->new_password) == 0) 
+        {
+            return redirect()->back()->with("error", "New Password cannot be same as your current password.");
+        }
+ 
+        $user =  User::find($auth->id);
+        $user->password =  Hash::make($request->new_password);
+        $user->save();
+        return back()->with('success', "Password Changed Successfully");
     }
 }

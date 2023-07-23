@@ -11,7 +11,7 @@
 			</div>
 			<!-- Form START -->
 			{{-- {{ route('profile.update') }} --}}
-			<form action="{{ route("profile.update",$User->id) }}" class="file-upload" enctype="multipart/form-data">
+			<form action="{{ route("profile.update",$User->id) }}" class="file-upload" enctype="multipart/form-data" method='POST'>
 				@csrf
 				@method('PUT')
 				<div class="row mb-5 gx-5">
@@ -70,7 +70,7 @@
 				</div>
 				{{-- {{ dd('going'); }} --}}
 			</form> 
-			<form action="" class="mt-5">
+			<form action="{{ route('profile.destroy',$User->id) }}" class="mt-5" method="POST">
 				@csrf
 				@method('DELETE')
 				<div class="gap-3 d-md-flex justify-content-md-end text-center">
@@ -78,28 +78,49 @@
 				</div>
 			</form>
 			
-			<form action="#">
-
+			<form action="{{ route("Passchange") }}" class="file-upload" method="POST">
+				@csrf
 					<!-- change password -->
 					<div class="col-xxl-6">
 						<div class="bg-secondary-soft px-4 py-5 rounded">
 							<div class="row g-3">
 								<h4 class="my-4">Change Password</h4>
 								<!-- Old password -->
-								<div class="col-md-6">
-									<label for="exampleInputPassword1" class="form-label">Old password *</label>
-									<input type="password" class="form-control" id="exampleInputPassword1">
+								<div class="col-md-12">
+									<label for="current_password" class="form-label">Current password *</label>
+									<input type="password" class="form-control" name="current_password" id="current_password" required >
+									
 								</div>
 								<!-- New password -->
 								<div class="col-md-6">
-									<label for="exampleInputPassword2" class="form-label">New password *</label>
-									<input type="password" class="form-control" id="exampleInputPassword2">
+									<label for="new_password" class="form-label">New password *</label>
+									<input type="password" class="form-control " name="new_password" id="new_password" required >
+									
 								</div>
 								<!-- Confirm password -->
-								<div class="col-md-12">
-									<label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
-									<input type="password" class="form-control" id="exampleInputPassword3">
+								<div class="col-md-6">
+									<label for="new_password_confirmation" class="form-label">Confirm password *</label>
+									<input type="password" class="form-control" name="new_password_confirmation" id="new_password_confirmation" required >
+									
 								</div>
+								{{-- Error Show --}}
+								@if($errors->any())
+								{!! implode('', $errors->all('<div style="color:red">:message</div>')) !!}
+								@endif
+								@if(Session::get('error') && Session::get('error') != null)
+								<div style="color:red">{{ Session::get('error') }}</div>
+								@php
+								Session::put('error', null)
+								@endphp
+								@endif
+								@if(Session::get('success') && Session::get('success') != null)
+								<div style="color:green">{{ Session::get('success') }}</div>
+								@php
+								Session::put('success', null)
+								@endphp
+								@endif
+
+								{{-- Error Show End--}}
 							</div>
 						</div>
 					</div>
@@ -107,7 +128,7 @@
 				<!-- button -->
 				<div class="gap-3 d-md-flex justify-content-md-end text-center">
 					
-					<button type="button" class="btn btn-primary btn-lg">Update password</button>
+					<button type="submit" class="btn btn-primary btn-lg">Update password</button>
 				</div>
 			</form>
 		</div>

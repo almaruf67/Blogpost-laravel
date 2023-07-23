@@ -68,8 +68,8 @@ class RegisterController extends Controller
         if ($file) {
             $extention = $file->getClientOriginalExtension();
             $fileName = time() . rand(1, 999999) . '.' . $extention;
-            $file->move('images/user', $fileName);
-            $path = '/images/user' . $fileName;
+            $file->move('images/user/', $fileName);
+            $path = '/images/user/' . $fileName;
         } else {
             $path = null;
         }
